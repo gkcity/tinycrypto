@@ -188,7 +188,7 @@ SOURCE_GROUP(Curve25519\\Source FILES ${Curve25519_Source})
 # common
 #-----------------------
 SET(Common_Header
-        common/crypto_api.h
+        common/tiny_crypto_api.h
         )
 
 SOURCE_GROUP(Common\\headers FILES ${Common_Header})
@@ -197,6 +197,7 @@ SOURCE_GROUP(Common\\headers FILES ${Common_Header})
 # source
 #----------------------------------------------------------------------------
 SET(SRC
+        api/tiny_crypto_api.h
         ${Common_Header}
         ${Bignum_Header}
         ${Bignum_Source}

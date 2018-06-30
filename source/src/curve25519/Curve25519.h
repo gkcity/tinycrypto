@@ -18,7 +18,7 @@
 #include <tiny_base.h>
 #include <stddef.h>
 #include <tiny_lor.h>
-#include <hap_api.h>
+#include <common/tiny_crypto_api.h>
 
 TINY_BEGIN_DECLS
 
@@ -45,11 +45,11 @@ typedef struct _Curve25519SharedKey
     uint32_t length;
 } Curve25519SharedKey;
 
-HAP_API
+TINY_CRYPTO_API
 TINY_LOR
 void Curve25519_GenerateKeyPair(Curve25519PublicKey *publicKey, Curve25519PrivateKey *privateKey);
 
-HAP_API
+TINY_CRYPTO_API
 TINY_LOR
 void Curve25519_GenerateSharedKey(Curve25519PrivateKey *b, Curve25519PublicKey *A, Curve25519SharedKey *sharedKey);
 

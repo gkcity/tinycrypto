@@ -17,12 +17,12 @@
 
 #include <tiny_lor.h>
 #include <tiny_base.h>
-#include <hap_api.h>
+#include <common/tiny_crypto_api.h>
 
 TINY_BEGIN_DECLS
 
 
-HAP_API
+TINY_CRYPTO_API
 TINY_LOR
 TinyRet chacha20poly1305_decrypt(const uint8_t key[64],
                                  uint32_t keyLength,
@@ -34,7 +34,7 @@ TinyRet chacha20poly1305_decrypt(const uint8_t key[64],
                                  const uint8_t *additional,
                                  uint32_t additionalLength);
 
-HAP_API
+TINY_CRYPTO_API
 TINY_LOR
 void chacha20poly1305_encrypt(const uint8_t *key,
                               uint32_t keyLength,

@@ -17,7 +17,6 @@
 
 #include <tiny_base.h>
 #include <tiny_lor.h>
-#include <hap_api.h>
 
 TINY_BEGIN_DECLS
 
@@ -31,7 +30,7 @@ typedef struct _HKDF
     uint32_t length;
 } HKDF;
 
-HAP_API
+TINY_CRYPTO_API
 TINY_LOR
 void HKDF_Generate(HKDF *thiz,
                    const uint8_t *salt,

@@ -9,8 +9,9 @@ SET(PROJ_NAME "TinyCrypto")
 #
 #---------------------------------------------------------------------------------------
 SET(SOURCE_ROOT ${PROJECT_SOURCE_DIR}/source/src)
-SET(TINY_ROOT ${PROJECT_SOURCE_DIR}/../tiny)
+INCLUDE_DIRECTORIES(${SOURCE_ROOT})
 
+SET(TINY_ROOT ${PROJECT_SOURCE_DIR}/../tiny)
 INCLUDE_DIRECTORIES(${TINY_ROOT}/source/src/TinyBase)
 INCLUDE_DIRECTORIES(${TINY_ROOT}/source/src/TinyPortable)
 INCLUDE_DIRECTORIES(${TINY_ROOT}/source/src/TinyPorting)
@@ -45,84 +46,84 @@ MESSAGE(STATUS "library output: ${LIBRARY_OUTPUT_PATH}")
 #
 #-------------------------------------------------------------------------------------
 IF (SRP_REMOTE_ENABLED EQUAL 1)
-    SET(HapCrypto_Header
-        ${SOURCE_ROOT}/common/crypto_api.h
+    SET(TinyCrypto_Header
+        ${SOURCE_ROOT}/common/tiny_crypto_api.h
         ${SOURCE_ROOT}/bignum/polarssl/bignum.h
-        ${SOURCE_ROOT}/gbignum/polarssl/bn_mul.h
-        ${SOURCE_ROOT}/gbignum/polarssl/polarssl_check_config.h
-        ${SOURCE_ROOT}/gbignum/polarssl/polarssl_config.h
-        ${SOURCE_ROOT}/gbignum/polarssl/polarssl_platform.h
-        ${SOURCE_ROOT}/gsrp/srp_define.h
-        ${SOURCE_ROOT}/gsrp/SrpServer.h
-        ${SOURCE_ROOT}/gsha/sha512.h
-        ${SOURCE_ROOT}/ghmac/hmac.h
-        ${SOURCE_ROOT}/ghkdf/HKDF.h
-        ${SOURCE_ROOT}/gchacha20/ChaCha20.h
-        ${SOURCE_ROOT}/gpoly1305/Poly1305.h
-        ${SOURCE_ROOT}/gchacha20poly1305/chacha20poly1305.h
-        ${SOURCE_ROOT}/gcrypt25519/crypt25519.h
-        ${SOURCE_ROOT}/ged25519/Ed25519.h
-        ${SOURCE_ROOT}/gcurve25519/Curve25519.h
+        ${SOURCE_ROOT}/bignum/polarssl/bn_mul.h
+        ${SOURCE_ROOT}/bignum/polarssl/polarssl_check_config.h
+        ${SOURCE_ROOT}/bignum/polarssl/polarssl_config.h
+        ${SOURCE_ROOT}/bignum/polarssl/polarssl_platform.h
+        ${SOURCE_ROOT}/srp/srp_define.h
+        ${SOURCE_ROOT}/srp/SrpServer.h
+        ${SOURCE_ROOT}/sha/sha512.h
+        ${SOURCE_ROOT}/hmac/hmac.h
+        ${SOURCE_ROOT}/hkdf/HKDF.h
+        ${SOURCE_ROOT}/chacha20/ChaCha20.h
+        ${SOURCE_ROOT}/poly1305/Poly1305.h
+        ${SOURCE_ROOT}/chacha20poly1305/chacha20poly1305.h
+        ${SOURCE_ROOT}/crypt25519/crypt25519.h
+        ${SOURCE_ROOT}/ed25519/Ed25519.h
+        ${SOURCE_ROOT}/curve25519/Curve25519.h
         )
 
-    SET(HapCrypto_Source
-        ${SOURCE_ROOT}/gbignum/polarssl/bignum.c
-        ${SOURCE_ROOT}/gbignum/polarssl/polarssl_platform.c
-        ${SOURCE_ROOT}/gsrp/remote/SrpServer.c
-        ${SOURCE_ROOT}/gsha/sha512.c
-        ${SOURCE_ROOT}/ghmac/hmac.c
-        ${SOURCE_ROOT}/ghkdf/HKDF.c
-        ${SOURCE_ROOT}/gchacha20/ChaCha20.c
-        ${SOURCE_ROOT}/gpoly1305/Poly1305.c
-        ${SOURCE_ROOT}/gchacha20poly1305/chacha20poly1305.c
-        ${SOURCE_ROOT}/gcrypt25519/crypt25519.c
-        ${SOURCE_ROOT}/ged25519/Ed25519.c
-        ${SOURCE_ROOT}/gcurve25519/Curve25519.c
+    SET(TinyCrypto_Source
+        ${SOURCE_ROOT}/bignum/polarssl/bignum.c
+        ${SOURCE_ROOT}/bignum/polarssl/polarssl_platform.c
+        ${SOURCE_ROOT}/srp/remote/SrpServer.c
+        ${SOURCE_ROOT}/sha/sha512.c
+        ${SOURCE_ROOT}/hmac/hmac.c
+        ${SOURCE_ROOT}/hkdf/HKDF.c
+        ${SOURCE_ROOT}/chacha20/ChaCha20.c
+        ${SOURCE_ROOT}/poly1305/Poly1305.c
+        ${SOURCE_ROOT}/chacha20poly1305/chacha20poly1305.c
+        ${SOURCE_ROOT}/crypt25519/crypt25519.c
+        ${SOURCE_ROOT}/ed25519/Ed25519.c
+        ${SOURCE_ROOT}/curve25519/Curve25519.c
         )
 
 ELSE ()
-    SET(HapCrypto_Header
-        ${SOURCE_ROOT}/gcommon/crypto_api.h
-        ${SOURCE_ROOT}/gbignum/polarssl/bignum.h
-        ${SOURCE_ROOT}/gbignum/polarssl/bn_mul.h
-        ${SOURCE_ROOT}/gbignum/polarssl/polarssl_check_config.h
-        ${SOURCE_ROOT}/gbignum/polarssl/polarssl_config.h
-        ${SOURCE_ROOT}/gbignum/polarssl/polarssl_platform.h
-        ${SOURCE_ROOT}/gsrp/srp_define.h
-        ${SOURCE_ROOT}/gsrp/SrpServer.h
-        ${SOURCE_ROOT}/gsrp/local/srp_NG3072.h
-        ${SOURCE_ROOT}/gsrp/local/srp_both.h
-        ${SOURCE_ROOT}/gsha/sha512.h
-        ${SOURCE_ROOT}/ghmac/hmac.h
-        ${SOURCE_ROOT}/ghkdf/HKDF.h
-        ${SOURCE_ROOT}/gchacha20/ChaCha20.h
-        ${SOURCE_ROOT}/gpoly1305/Poly1305.h
-        ${SOURCE_ROOT}/gchacha20poly1305/chacha20poly1305.h
-        ${SOURCE_ROOT}/gcrypt25519/crypt25519.h
-        ${SOURCE_ROOT}/ged25519/Ed25519.h
-        ${SOURCE_ROOT}/gcurve25519/Curve25519.h
+    SET(TinyCrypto_Header
+        ${SOURCE_ROOT}/common/tiny_crypto_api.h
+        ${SOURCE_ROOT}/bignum/polarssl/bignum.h
+        ${SOURCE_ROOT}/bignum/polarssl/bn_mul.h
+        ${SOURCE_ROOT}/bignum/polarssl/polarssl_check_config.h
+        ${SOURCE_ROOT}/bignum/polarssl/polarssl_config.h
+        ${SOURCE_ROOT}/bignum/polarssl/polarssl_platform.h
+        ${SOURCE_ROOT}/srp/srp_define.h
+        ${SOURCE_ROOT}/srp/SrpServer.h
+        ${SOURCE_ROOT}/srp/local/srp_NG3072.h
+        ${SOURCE_ROOT}/srp/local/srp_both.h
+        ${SOURCE_ROOT}/sha/sha512.h
+        ${SOURCE_ROOT}/hmac/hmac.h
+        ${SOURCE_ROOT}/hkdf/HKDF.h
+        ${SOURCE_ROOT}/chacha20/ChaCha20.h
+        ${SOURCE_ROOT}/poly1305/Poly1305.h
+        ${SOURCE_ROOT}/chacha20poly1305/chacha20poly1305.h
+        ${SOURCE_ROOT}/crypt25519/crypt25519.h
+        ${SOURCE_ROOT}/ed25519/Ed25519.h
+        ${SOURCE_ROOT}/curve25519/Curve25519.h
         )
 
-    SET(HapCrypto_Source
-        ${SOURCE_ROOT}/gbignum/polarssl/bignum.c
-        ${SOURCE_ROOT}/gbignum/polarssl/polarssl_platform.c
-        ${SOURCE_ROOT}/gsrp/local/SrpServer.c
-        ${SOURCE_ROOT}/gsrp/local/srp_NG3072.c
-        ${SOURCE_ROOT}/gsrp/local/srp_both.c
-        ${SOURCE_ROOT}/gsha/sha512.c
-        ${SOURCE_ROOT}/ghmac/hmac.c
-        ${SOURCE_ROOT}/ghkdf/HKDF.c
-        ${SOURCE_ROOT}/gchacha20/ChaCha20.c
-        ${SOURCE_ROOT}/gpoly1305/Poly1305.c
-        ${SOURCE_ROOT}/gchacha20poly1305/chacha20poly1305.c
-        ${SOURCE_ROOT}/gcrypt25519/crypt25519.c
-        ${SOURCE_ROOT}/ged25519/Ed25519.c
-        ${SOURCE_ROOT}/gcurve25519/Curve25519.c
+    SET(TinyCrypto_Source
+        ${SOURCE_ROOT}/bignum/polarssl/bignum.c
+        ${SOURCE_ROOT}/bignum/polarssl/polarssl_platform.c
+        ${SOURCE_ROOT}/srp/local/SrpServer.c
+        ${SOURCE_ROOT}/srp/local/srp_NG3072.c
+        ${SOURCE_ROOT}/srp/local/srp_both.c
+        ${SOURCE_ROOT}/sha/sha512.c
+        ${SOURCE_ROOT}/hmac/hmac.c
+        ${SOURCE_ROOT}/hkdf/HKDF.c
+        ${SOURCE_ROOT}/chacha20/ChaCha20.c
+        ${SOURCE_ROOT}/poly1305/Poly1305.c
+        ${SOURCE_ROOT}/chacha20poly1305/chacha20poly1305.c
+        ${SOURCE_ROOT}/crypt25519/crypt25519.c
+        ${SOURCE_ROOT}/ed25519/Ed25519.c
+        ${SOURCE_ROOT}/curve25519/Curve25519.c
         )
 ENDIF ()
 
-SOURCE_GROUP(HapCrypto\\headers FILES ${TinyCrypto_Header})
-SOURCE_GROUP(HapCrypto\\sources FILES ${TinyCrypto_Source})
+SOURCE_GROUP(TinyCrypto\\headers FILES ${TinyCrypto_Header})
+SOURCE_GROUP(TinyCrypto\\sources FILES ${TinyCrypto_Source})
 
 SET(SRC
         ${TinyCrypto_Header}

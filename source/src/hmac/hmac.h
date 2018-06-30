@@ -16,14 +16,13 @@
 #define __HMAC_H__
 
 #include <tiny_base.h>
-#include <hap_api.h>
 #include <sha/sha512.h>
 #include <tiny_lor.h>
 
 TINY_BEGIN_DECLS
 
 
-HAP_API
+TINY_CRYPTO_API
 TINY_LOR
 void hmac_sha512(uint8_t out[SHA512_DIGEST_SIZE],
                  const uint8_t *salt,
