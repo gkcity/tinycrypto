@@ -20,11 +20,7 @@
 TINY_BEGIN_DECLS
 
 
-uint32_t base64_decode_out_length(const char *string);
-
 uint32_t base64_decode(const char *string, uint8_t *out);
-
-uint32_t base64_encode_out_length(int bytesLength);
 
 uint32_t base64_encode(const uint8_t *bytes, int length, char *out);
 
