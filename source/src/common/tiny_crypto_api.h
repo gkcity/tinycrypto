@@ -17,7 +17,7 @@
 
 
 #ifdef _MSC_VER
-#   if  (defined tiny_crypto_shared_EXPORTS)
+#   if  (defined tinycrypto_EXPORTS)
 #       define TINY_CRYPTO_EXPORT _declspec(dllexport)
 #   else
 #       define TINY_CRYPTO_EXPORT _declspec(dllimport)
