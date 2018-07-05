@@ -18,6 +18,7 @@
 #include <tiny_base.h>
 #include <stddef.h>
 #include <tiny_lor.h>
+#include <common/tiny_crypto_api.h>
 
 TINY_BEGIN_DECLS
 
@@ -67,7 +68,7 @@ TinyRet Ed25519_Verify(ED25519PublicKey *key,
 
 TINY_CRYPTO_API
 TINY_LOR
-void Ed25519_Sign(Ed25519KeyPair *keys,
+void Ed25519_Sign(ED25519PrivateKey *key,
                   ED25519Signature *signature,
                   const uint8_t *data,
                   uint32_t length);

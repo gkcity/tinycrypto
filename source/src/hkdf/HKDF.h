@@ -17,6 +17,7 @@
 
 #include <tiny_base.h>
 #include <tiny_lor.h>
+#include <common/tiny_crypto_api.h>
 
 TINY_BEGIN_DECLS
 

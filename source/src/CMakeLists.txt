@@ -4,6 +4,21 @@
 #
 #-----------------------------------------------------------------------------
 
+
+#-----------------------
+# Base64
+#-----------------------
+SET(Base64_Header
+        base64/base64.h
+        )
+
+SET(Base64_Source
+        base64/base64.c
+        )
+
+SOURCE_GROUP(Base64\\headers FILES ${Base64_Header})
+SOURCE_GROUP(Base64\\Source FILES ${Base64_Source})
+
 #-----------------------
 # bignum
 #-----------------------
@@ -197,8 +212,10 @@ SOURCE_GROUP(Common\\headers FILES ${Common_Header})
 # source
 #----------------------------------------------------------------------------
 SET(SRC
-        api/tiny_crypto_api.h
+        commcon/tiny_crypto_api.h
         ${Common_Header}
+        ${Base64_Header}
+        ${Base64_source}
         ${Bignum_Header}
         ${Bignum_Source}
         ${Srp_Header}

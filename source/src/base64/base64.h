@@ -1,68 +1,34 @@
-
 /**
- * `b64.h' - b64
+ * Copyright (C) 2013-2015
  *
- * copyright (c) 2014 joseph werle
+ * @author jxfengzi@gmail.com
+ * @date   2013-7-9
+ *
+ * @file   base64.h
+ *
+ * @remark
+ *      set tabstop=4
+ *      set shiftwidth=4
+ *      set expandtab
  */
 
-#ifndef B64_H
-#define B64_H 1
+#ifndef __BASE64_H__
+#define __BASE64_H__
 
-/**
- *  Memory allocation functions to use. You can define b64_malloc and
- * b64_realloc to custom functions if you want.
- */
+#include <tiny_base.h>
 
-#ifndef b64_malloc
-#  define b64_malloc(ptr) malloc(ptr)
-#endif
-#ifndef b64_realloc
-#  define b64_realloc(ptr, size) realloc(ptr, size)
-#endif
+TINY_BEGIN_DECLS
 
-/**
- * Base64 index table.
- */
 
-static const char b64_table[] = {
-  'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
-  'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
-  'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
-  'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f',
-  'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
-  'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
-  'w', 'x', 'y', 'z', '0', '1', '2', '3',
-  '4', '5', '6', '7', '8', '9', '+', '/'
-};
+uint32_t base64_decode_out_length(const char *string);
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+uint32_t base64_decode(const char *string, uint8_t *out);
 
-/**
- * Encode `unsigned char *' source with `size_t' size.
- * Returns a `char *' base64 encoded string.
- */
+uint32_t base64_encode_out_length(int bytesLength);
 
-char *
-b64_encode (const unsigned char *, size_t);
+uint32_t base64_encode(const uint8_t *bytes, int length, char *out);
 
-/**
- * Dencode `char *' source with `size_t' size.
- * Returns a `unsigned char *' base64 decoded string.
- */
-unsigned char *
-b64_decode (const char *, size_t);
 
-/**
- * Dencode `char *' source with `size_t' size.
- * Returns a `unsigned char *' base64 decoded string + size of decoded string.
- */
-unsigned char *
-b64_decode_ex (const char *, size_t, size_t *);
+TINY_END_DECLS
 
-#ifdef __cplusplus
-}
-#endif
-
-#endif
+#endif /* __BASE64_H__ */

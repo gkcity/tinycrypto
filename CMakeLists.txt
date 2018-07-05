@@ -48,6 +48,7 @@ MESSAGE(STATUS "library output: ${LIBRARY_OUTPUT_PATH}")
 IF (SRP_REMOTE_ENABLED EQUAL 1)
     SET(TinyCrypto_Header
         ${SOURCE_ROOT}/common/tiny_crypto_api.h
+        ${SOURCE_ROOT}/base64/base64.h
         ${SOURCE_ROOT}/bignum/polarssl/bignum.h
         ${SOURCE_ROOT}/bignum/polarssl/bn_mul.h
         ${SOURCE_ROOT}/bignum/polarssl/polarssl_check_config.h
@@ -64,9 +65,11 @@ IF (SRP_REMOTE_ENABLED EQUAL 1)
         ${SOURCE_ROOT}/crypt25519/crypt25519.h
         ${SOURCE_ROOT}/ed25519/Ed25519.h
         ${SOURCE_ROOT}/curve25519/Curve25519.h
+        ${SOURCE_ROOT}/secret/SecretKey.h
         )
 
     SET(TinyCrypto_Source
+        ${SOURCE_ROOT}/base64/base64.c
         ${SOURCE_ROOT}/bignum/polarssl/bignum.c
         ${SOURCE_ROOT}/bignum/polarssl/polarssl_platform.c
         ${SOURCE_ROOT}/srp/remote/SrpServer.c
@@ -84,6 +87,7 @@ IF (SRP_REMOTE_ENABLED EQUAL 1)
 ELSE ()
     SET(TinyCrypto_Header
         ${SOURCE_ROOT}/common/tiny_crypto_api.h
+        ${SOURCE_ROOT}/base64/base64.h
         ${SOURCE_ROOT}/bignum/polarssl/bignum.h
         ${SOURCE_ROOT}/bignum/polarssl/bn_mul.h
         ${SOURCE_ROOT}/bignum/polarssl/polarssl_check_config.h
@@ -102,9 +106,11 @@ ELSE ()
         ${SOURCE_ROOT}/crypt25519/crypt25519.h
         ${SOURCE_ROOT}/ed25519/Ed25519.h
         ${SOURCE_ROOT}/curve25519/Curve25519.h
+        ${SOURCE_ROOT}/secret/SecretKey.h
         )
 
     SET(TinyCrypto_Source
+        ${SOURCE_ROOT}/base64/base64.c
         ${SOURCE_ROOT}/bignum/polarssl/bignum.c
         ${SOURCE_ROOT}/bignum/polarssl/polarssl_platform.c
         ${SOURCE_ROOT}/srp/local/SrpServer.c

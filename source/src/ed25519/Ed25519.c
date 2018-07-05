@@ -56,7 +56,7 @@ TinyRet Ed25519_Verify(ED25519PublicKey *key,
 }
 
 TINY_LOR
-void Ed25519_Sign(Ed25519KeyPair *keys,
+void Ed25519_Sign(ED25519PrivateKey *key,
                   ED25519Signature *signature,
                   const uint8_t *data,
                   uint32_t length)
@@ -67,7 +67,7 @@ void Ed25519_Sign(Ed25519KeyPair *keys,
     memset(buf, 0, 1024);
     memcpy(buf + 64, data, length);
 
-    crypto_ed25519_sign(buf, &len, buf + 64, length, keys->privateKey.value);
+    crypto_ed25519_sign(buf, &len, buf + 64, length, key->value);
 
     memcpy(signature->value, buf, 64);
     signature->length = 64;
