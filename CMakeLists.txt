@@ -56,6 +56,7 @@ IF (SRP_REMOTE_ENABLED EQUAL 1)
         ${SOURCE_ROOT}/bignum/polarssl/polarssl_platform.h
         ${SOURCE_ROOT}/srp/srp_define.h
         ${SOURCE_ROOT}/srp/SrpServer.h
+        ${SOURCE_ROOT}/sha/sha1.h
         ${SOURCE_ROOT}/sha/sha512.h
         ${SOURCE_ROOT}/hmac/hmac.h
         ${SOURCE_ROOT}/hkdf/HKDF.h
@@ -73,6 +74,7 @@ IF (SRP_REMOTE_ENABLED EQUAL 1)
         ${SOURCE_ROOT}/bignum/polarssl/bignum.c
         ${SOURCE_ROOT}/bignum/polarssl/polarssl_platform.c
         ${SOURCE_ROOT}/srp/remote/SrpServer.c
+        ${SOURCE_ROOT}/sha/sha1.c
         ${SOURCE_ROOT}/sha/sha512.c
         ${SOURCE_ROOT}/hmac/hmac.c
         ${SOURCE_ROOT}/hkdf/HKDF.c

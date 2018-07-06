@@ -78,10 +78,12 @@ SOURCE_GROUP(Srp\\Source FILES ${Srp_Source})
 # sha
 #-----------------------
 SET(SHA_Header
+        sha/sha1.h
         sha/sha512.h
         )
 
 SET(SHA_Source
+        sha/sha1.c
         sha/sha512.c
         )
 

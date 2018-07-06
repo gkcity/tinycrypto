@@ -22,18 +22,25 @@
 TINY_BEGIN_DECLS
 
 
-#define HKDF_HASH_LEN       64
-#define HKDF_KEY_LEN        32
+#define HKDF_HASH_MAX_LEN       128
+#define HKDF_KEY_LEN            32
 
 typedef struct _HKDF
 {
-    uint8_t value[HKDF_HASH_LEN];
-    uint32_t length;
+    uint8_t         value[HKDF_HASH_MAX_LEN];
+    uint32_t        length;
 } HKDF;
+
+typedef enum _DigestType
+{
+    HASH_DIGEST_SHA1 = 0,
+    HASH_DIGEST_SHA512 = 1,
+} DigestType;
 
 TINY_CRYPTO_API
 TINY_LOR
 void HKDF_Generate(HKDF *thiz,
+                   DigestType digestType,
                    const uint8_t *salt,
                    uint32_t salt_length,
                    const uint8_t *info,

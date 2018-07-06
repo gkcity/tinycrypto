@@ -12,8 +12,8 @@
  *      set expandtab
  */
 
-#ifndef __SHA_H__
-#define __SHA_H__
+#ifndef __SHA512_H__
+#define __SHA512_H__
 
 #include <tiny_base.h>
 #include <tiny_lor.h>
@@ -48,4 +48,4 @@ void sha512_hash(uint8_t out[SHA512_DIGEST_SIZE], const uint8_t *message, uint64
 
 TINY_END_DECLS
 
-#endif /* __SHA_H__ */
+#endif /* __SHA512_H__ */
