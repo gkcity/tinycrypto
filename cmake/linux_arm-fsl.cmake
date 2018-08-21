@@ -47,11 +47,19 @@ SET(DEPENDENCE_LIB tiny)
 # DEBUG INFORMATION
 #
 #----------------------------------------------------------------------------
-#ADD_DEFINITIONS(-DTINY_DEBUG)
+ADD_DEFINITIONS(-DTINY_DEBUG)
 
 #----------------------------------------------------------------------------
 #
-# TinyThread
+# SRP Remote
 #
 #----------------------------------------------------------------------------
-SET(TINY_THREAD_ENABLED 1)
+SET(SRP_REMOTE_ENABLED 1)
+
+#----------------------------------------------------------------------------
+#
+# Export library
+#
+#----------------------------------------------------------------------------
+SET(EXPORT_STATIC_LIBRARY 0)
+SET(EXPORT_SHARED_LIBRARY 1)
