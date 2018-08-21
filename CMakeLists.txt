@@ -141,15 +141,19 @@ SET(SRC
 #----------------------------------------------------------------------------
 # static library
 #----------------------------------------------------------------------------
+IF (EXPORT_STATIC_LIBRARY EQUAL 1)
 ADD_LIBRARY(tinycrypto_static STATIC ${SRC})
 SET_TARGET_PROPERTIES(tinycrypto_static PROPERTIES OUTPUT_NAME "tinycrypto_static")
 SET_TARGET_PROPERTIES(tinycrypto_static PROPERTIES LINKER_LANGUAGE C)
+ENDIF ()
 
 #----------------------------------------------------------------------------
 # shared library
 #----------------------------------------------------------------------------
+IF (EXPORT_SHARED_LIBRARY EQUAL 1)
 MESSAGE(STATUS "link library: ${DEPENDENCE_LIB}")
 ADD_LIBRARY(tinycrypto SHARED ${SRC})
 SET_TARGET_PROPERTIES(tinycrypto PROPERTIES OUTPUT_NAME "tinycrypto")
 SET_TARGET_PROPERTIES(tinycrypto PROPERTIES LINKER_LANGUAGE C)
 TARGET_LINK_LIBRARIES(tinycrypto ${DEPENDENCE_LIB})
+ENDIF ()
