@@ -1,7 +1,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
-PROJECT(TinyHAP-DEBUG C)
+PROJECT(TinyCrypto-DEBUG C)
 
-SET(PROJ_NAME "TinyHAP-DEBUG")
+SET(PROJ_NAME "TinyCrypto-DEBUG")
 
 #---------------------------------------------------------------------------------------
 #
