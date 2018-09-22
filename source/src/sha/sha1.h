@@ -32,12 +32,15 @@ typedef struct
     uint8_t     buffer[64];     /**< SHA-1 buffer  */
 } sha1_ctx;
 
+TINY_CRYPTO_API
 TINY_LOR
 void sha1_init(sha1_ctx *ctx);
 
+TINY_CRYPTO_API
 TINY_LOR
 void sha1_update(sha1_ctx *ctx, const void *p, size_t len);
 
+TINY_CRYPTO_API
 TINY_LOR
 void sha1_final(uint8_t digest[SHA1_DIGEST_SIZE], sha1_ctx *context);
 

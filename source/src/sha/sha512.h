@@ -33,15 +33,19 @@ typedef struct
     uint64_t h[8];
 } sha512_ctx;
 
+TINY_CRYPTO_API
 TINY_LOR
 void sha512_init(sha512_ctx *ctx);
 
+TINY_CRYPTO_API
 TINY_LOR
 void sha512_update(sha512_ctx *ctx, const unsigned char *message, unsigned int len);
 
+TINY_CRYPTO_API
 TINY_LOR
 void sha512_final(sha512_ctx *ctx, unsigned char *digest);
 
+TINY_CRYPTO_API
 TINY_LOR
 void sha512_hash(uint8_t out[SHA512_DIGEST_SIZE], const uint8_t *message, uint64_t length);
 
