@@ -26,7 +26,7 @@ TINY_BEGIN_DECLS
 
 TINY_LOR
 TINY_CRYPTO_API
-void hmac_sha1(uint8_t out[SHA1_DIGEST_SIZE],
+void tiny_hmac_sha1(uint8_t out[SHA1_DIGEST_SIZE],
                size_t *out_length,
                const uint8_t *salt,
                size_t salt_length,
@@ -35,7 +35,7 @@ void hmac_sha1(uint8_t out[SHA1_DIGEST_SIZE],
 
 TINY_LOR
 TINY_CRYPTO_API
-void hmac_sha512(uint8_t out[SHA512_DIGEST_SIZE],
+void tiny_hmac_sha512(uint8_t out[SHA512_DIGEST_SIZE],
                  const uint8_t *salt,
                  uint32_t salt_length,
                  const uint8_t *data,
