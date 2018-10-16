@@ -51,6 +51,7 @@ typedef struct _Ed25519KeyPair
     ED25519PublicKey publicKey;
 } Ed25519KeyPair;
 
+#if 0
 TINY_LOR
 TINY_CRYPTO_API
 void tiny_ed25519_generateKeyPair(Ed25519KeyPair *thiz);
@@ -58,6 +59,7 @@ void tiny_ed25519_generateKeyPair(Ed25519KeyPair *thiz);
 TINY_LOR
 TINY_CRYPTO_API
 void tiny_ed25519_copyKeyPair(Ed25519KeyPair *dst, Ed25519KeyPair *src);
+#endif
 
 TINY_LOR
 TINY_CRYPTO_API
@@ -68,7 +70,7 @@ TinyRet tiny_ed25519_verify(ED25519PublicKey *key,
 
 TINY_LOR
 TINY_CRYPTO_API
-void tiny_ed25519_sign(ED25519PrivateKey *key,
+void tiny_ed25519_sign(Ed25519KeyPair *keyPair,
                        ED25519Signature *signature,
                        const uint8_t *data,
                        uint32_t length);

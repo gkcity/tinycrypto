@@ -177,10 +177,17 @@ SOURCE_GROUP(crypt25519\\Source FILES ${crypt25519_Source})
 #-----------------------
 SET(ED25519_Header
         ed25519/tiny_ed25519.h
+        ed25519/precomp_data.h
+        ed25519/fe.h
+        ed25519/ge.h
+        ed25519/sc.h
         )
 
 SET(ED25519_Source
         ed25519/tiny_ed25519.c
+        ed25519/fe.c
+        ed25519/ge.c
+        ed25519/sc.c
         )
 
 SOURCE_GROUP(ED25519\\headers FILES ${ED25519_Header})

@@ -65,6 +65,10 @@ IF (SRP_REMOTE_ENABLED EQUAL 1)
         ${SOURCE_ROOT}/chacha20poly1305/tiny_chacha20poly1305.h
         ${SOURCE_ROOT}/crypt25519/crypt25519.h
         ${SOURCE_ROOT}/ed25519/tiny_ed25519.h
+        ${SOURCE_ROOT}/ed25519/precomp_data.h
+        ${SOURCE_ROOT}/ed25519/fe.h
+        ${SOURCE_ROOT}/ed25519/ge.h
+        ${SOURCE_ROOT}/ed25519/sc.h
         ${SOURCE_ROOT}/curve25519/Curve25519.h
         ${SOURCE_ROOT}/secret/SecretKey.h
         )
@@ -83,6 +87,9 @@ IF (SRP_REMOTE_ENABLED EQUAL 1)
         ${SOURCE_ROOT}/chacha20poly1305/tiny_chacha20poly1305.c
         ${SOURCE_ROOT}/crypt25519/crypt25519.c
         ${SOURCE_ROOT}/ed25519/tiny_ed25519.c
+        ${SOURCE_ROOT}/ed25519/fe.c
+        ${SOURCE_ROOT}/ed25519/ge.c
+        ${SOURCE_ROOT}/ed25519/sc.c
         ${SOURCE_ROOT}/curve25519/Curve25519.c
         )
 
@@ -107,6 +114,10 @@ ELSE ()
         ${SOURCE_ROOT}/chacha20poly1305/tiny_chacha20poly1305.h
         ${SOURCE_ROOT}/crypt25519/crypt25519.h
         ${SOURCE_ROOT}/ed25519/tiny_ed25519.h
+        ${SOURCE_ROOT}/ed25519/precomp_data.h
+        ${SOURCE_ROOT}/ed25519/fe.h
+        ${SOURCE_ROOT}/ed25519/ge.h
+        ${SOURCE_ROOT}/ed25519/sc.h
         ${SOURCE_ROOT}/curve25519/Curve25519.h
         ${SOURCE_ROOT}/secret/SecretKey.h
         )
@@ -126,6 +137,9 @@ ELSE ()
         ${SOURCE_ROOT}/chacha20poly1305/tiny_chacha20poly1305.c
         ${SOURCE_ROOT}/crypt25519/crypt25519.c
         ${SOURCE_ROOT}/ed25519/tiny_ed25519.c
+        ${SOURCE_ROOT}/ed25519/fe.c
+        ${SOURCE_ROOT}/ed25519/ge.c
+        ${SOURCE_ROOT}/ed25519/sc.c
         ${SOURCE_ROOT}/curve25519/Curve25519.c
         )
 ENDIF ()
