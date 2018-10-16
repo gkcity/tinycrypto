@@ -4,7 +4,7 @@
  * @author jxfengzi@gmail.com
  * @date   2013-7-9
  *
- * @file   Ed25519.h
+ * @file   tiny_ed25519.h
  *
  * @remark
  *      set tabstop=4
@@ -12,8 +12,8 @@
  *      set expandtab
  */
 
-#ifndef __ED25519_H__
-#define __ED25519_H__
+#ifndef __TINY_ED25519_H__
+#define __TINY_ED25519_H__
 
 #include <tiny_base.h>
 #include <stddef.h>
@@ -53,27 +53,27 @@ typedef struct _Ed25519KeyPair
 
 TINY_LOR
 TINY_CRYPTO_API
-void Ed25519_GenerateKeyPair(Ed25519KeyPair *thiz);
+void tiny_ed25519_generateKeyPair(Ed25519KeyPair *thiz);
 
 TINY_LOR
 TINY_CRYPTO_API
-void Ed25519KeyPair_Copy(Ed25519KeyPair *dst, Ed25519KeyPair *src);
+void tiny_ed25519_copyKeyPair(Ed25519KeyPair *dst, Ed25519KeyPair *src);
 
 TINY_LOR
 TINY_CRYPTO_API
-TinyRet Ed25519_Verify(ED25519PublicKey *key,
+TinyRet tiny_ed25519_verify(ED25519PublicKey *key,
+                            ED25519Signature *signature,
+                            const uint8_t *data,
+                            uint32_t length);
+
+TINY_LOR
+TINY_CRYPTO_API
+void tiny_ed25519_sign(ED25519PrivateKey *key,
                        ED25519Signature *signature,
                        const uint8_t *data,
                        uint32_t length);
 
-TINY_LOR
-TINY_CRYPTO_API
-void Ed25519_Sign(ED25519PrivateKey *key,
-                  ED25519Signature *signature,
-                  const uint8_t *data,
-                  uint32_t length);
-
 
 TINY_END_DECLS
 
-#endif /* __ED25519_H__ */
+#endif /* __TINY_ED25519_H__ */

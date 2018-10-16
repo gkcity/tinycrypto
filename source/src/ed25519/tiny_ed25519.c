@@ -4,7 +4,7 @@
  * @author jxfengzi@gmail.com
  * @date   2013-7-9
  *
- * @file   Ed25519.c
+ * @file   tiny_ed25519.c
  *
  * @remark
  *      set tabstop=4
@@ -13,11 +13,11 @@
  */
 
 #include <sha/sha512.h>
-#include "Ed25519.h"
+#include "tiny_ed25519.h"
 #include "crypt25519/crypt25519.h"
 
 TINY_LOR
-void Ed25519_GenerateKeyPair(Ed25519KeyPair *thiz)
+void tiny_ed25519_generateKeyPair(Ed25519KeyPair *thiz)
 {
     crypto_ed25519_keypair(thiz->publicKey.value, thiz->privateKey.value);
     thiz->publicKey.length = ED25519_PUBLIC_KEY_LENGTH;
@@ -25,7 +25,7 @@ void Ed25519_GenerateKeyPair(Ed25519KeyPair *thiz)
 }
 
 TINY_LOR
-void Ed25519KeyPair_Copy(Ed25519KeyPair *dst, Ed25519KeyPair *src)
+void tiny_ed25519_copyKeyPair(Ed25519KeyPair *dst, Ed25519KeyPair *src)
 {
     if (dst != src)
     {
@@ -38,10 +38,10 @@ void Ed25519KeyPair_Copy(Ed25519KeyPair *dst, Ed25519KeyPair *src)
 }
 
 TINY_LOR
-TinyRet Ed25519_Verify(ED25519PublicKey *key,
-                       ED25519Signature *signature,
-                       const uint8_t *data,
-                       uint32_t length)
+TinyRet tiny_ed25519_verify(ED25519PublicKey *key,
+                            ED25519Signature *signature,
+                            const uint8_t *data,
+                            uint32_t length)
 {
     uint8_t result[1024];
     unsigned long long int resultLength = 0;
@@ -56,10 +56,10 @@ TinyRet Ed25519_Verify(ED25519PublicKey *key,
 }
 
 TINY_LOR
-void Ed25519_Sign(ED25519PrivateKey *key,
-                  ED25519Signature *signature,
-                  const uint8_t *data,
-                  uint32_t length)
+void tiny_ed25519_sign(ED25519PrivateKey *key,
+                       ED25519Signature *signature,
+                       const uint8_t *data,
+                       uint32_t length)
 {
     uint8_t buf[1024];
     unsigned long long int len = 0;

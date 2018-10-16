@@ -9,11 +9,11 @@
 # Base64
 #-----------------------
 SET(Base64_Header
-        base64/base64.h
+        base64/tiny_base64.h
         )
 
 SET(Base64_Source
-        base64/base64.c
+        base64/tiny_base64.c
         )
 
 SOURCE_GROUP(Base64\\headers FILES ${Base64_Header})
@@ -147,11 +147,11 @@ SOURCE_GROUP(Poly1305\\Source FILES ${Poly1305_Source})
 # Chacha20poly1305
 #-----------------------
 SET(Chacha20poly1305_Header
-        chacha20poly1305/chacha20poly1305.h
+        chacha20poly1305/tiny_chacha20poly1305.h
         )
 
 SET(Chacha20poly1305_Source
-        chacha20poly1305/chacha20poly1305.c
+        chacha20poly1305/tiny_chacha20poly1305.c
         )
 
 SOURCE_GROUP(Chacha20poly1305\\headers FILES ${Chacha20poly1305_Header})
@@ -176,11 +176,11 @@ SOURCE_GROUP(crypt25519\\Source FILES ${crypt25519_Source})
 # ED25519
 #-----------------------
 SET(ED25519_Header
-        ed25519/Ed25519.h
+        ed25519/tiny_ed25519.h
         )
 
 SET(ED25519_Source
-        ed25519/Ed25519.c
+        ed25519/tiny_ed25519.c
         )
 
 SOURCE_GROUP(ED25519\\headers FILES ${ED25519_Header})

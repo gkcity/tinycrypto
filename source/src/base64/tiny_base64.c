@@ -14,7 +14,7 @@
 
 #include <tiny_malloc.h>
 #include <ctype.h>
-#include "base64.h"
+#include "tiny_base64.h"
 
 /* aaaack but it's fast and const should make it shared text page. */
 static const unsigned char pr2six[256] =
@@ -38,29 +38,32 @@ static const unsigned char pr2six[256] =
                 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64
         };
 
-//uint32_t base64_decode_out_length(const char *string)
-//{
-//    uint32_t nbytesdecoded;
-//    register const unsigned char *bufin;
-//    register uint32_t nprbytes;
-//
-//    bufin = (const unsigned char *) string;
-//    while (pr2six[*(bufin++)] <= 63)
-//    {
-//    }
-//
-//    nprbytes = (uint32_t)(bufin - (const unsigned char *) string) - 1;
-//    nbytesdecoded = ((nprbytes + 3) / 4) * 3;
-//
-//    return nbytesdecoded + 1;
-//}
-
-uint32_t base64_decode(const char *bufcoded, uint8_t *bufplain)
+uint32_t tiny_base64_decode_out_length(const char *string)
 {
     uint32_t nbytesdecoded;
     register const unsigned char *bufin;
-    register unsigned char *bufout;
     register uint32_t nprbytes;
+
+    bufin = (const unsigned char *) string;
+    while (pr2six[*(bufin++)] <= 63)
+    {
+    }
+
+    nprbytes = (uint32_t)(bufin - (const unsigned char *) string) - 1;
+    nbytesdecoded = ((nprbytes + 3) / 4) * 3;
+
+    return nbytesdecoded + 1;
+}
+
+uint32_t tiny_base64_decode(const char *bufcoded, uint8_t *bufplain)
+{
+    uint32_t nbytesdecoded = 0;
+    register const unsigned char *bufin = NULL;
+    register unsigned char *bufout = NULL;
+    register uint32_t nprbytes = 0;
+//    const unsigned char *bufin = NULL;
+//    unsigned char *bufout = NULL;
+//    uint32_t nprbytes = 0;
 
     bufin = (const unsigned char *) bufcoded;
     while (pr2six[*(bufin++)] <= 63)
@@ -104,12 +107,12 @@ uint32_t base64_decode(const char *bufcoded, uint8_t *bufplain)
 
 static const char basis_64[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
-//uint32_t base64_encode_out_length(int bytesLength)
-//{
-//    return ((bytesLength + 2) / 3 * 4) + 1;
-//}
+uint32_t tiny_base64_encode_out_length(int bytesLength)
+{
+    return ((bytesLength + 2) / 3 * 4) + 1;
+}
 
-uint32_t base64_encode(const uint8_t *bytes, int length, char *out)
+uint32_t tiny_base64_encode(const uint8_t *bytes, int length, char *out)
 {
     int i = 0;
     char *p = out;

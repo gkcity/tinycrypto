@@ -15,7 +15,7 @@
 #include <chacha20/ChaCha20.h>
 #include <poly1305/Poly1305.h>
 #include <tiny_log.h>
-#include "chacha20poly1305.h"
+#include "tiny_chacha20poly1305.h"
 
 #define TAG "chacha20poly1305"
 
@@ -67,15 +67,15 @@ static void poly1305_compute_mac(const uint8_t key[32],
 }
 
 TINY_LOR
-TinyRet chacha20poly1305_decrypt(const uint8_t *key,
-                                 uint32_t keyLength,
-                                 const uint8_t nonce[8],
-                                 const uint8_t *ciphertext,
-                                 uint32_t ciphertextLength,
-                                 const uint8_t mac[16],
-                                 uint8_t *plaintext,
-                                 const uint8_t *additional,
-                                 uint32_t additionalLength)
+TinyRet tiny_chacha20poly1305_decrypt(const uint8_t *key,
+                                      uint32_t keyLength,
+                                      const uint8_t nonce[8],
+                                      const uint8_t *ciphertext,
+                                      uint32_t ciphertextLength,
+                                      const uint8_t mac[16],
+                                      uint8_t *plaintext,
+                                      const uint8_t *additional,
+                                      uint32_t additionalLength)
 {
     ChaCha20 cc;
     uint8_t temp[64];
@@ -106,15 +106,15 @@ TinyRet chacha20poly1305_decrypt(const uint8_t *key,
 }
 
 TINY_LOR
-void chacha20poly1305_encrypt(const uint8_t *key,
-                              uint32_t keyLength,
-                              const uint8_t nonce[8],
-                              const uint8_t *plaintext,
-                              uint32_t plaintextLength,
-                              uint8_t *ciphertext,
-                              uint8_t mac[16],
-                              const uint8_t *additional,
-                              uint32_t additionalLength)
+void tiny_chacha20poly1305_encrypt(const uint8_t *key,
+                                   uint32_t keyLength,
+                                   const uint8_t nonce[8],
+                                   const uint8_t *plaintext,
+                                   uint32_t plaintextLength,
+                                   uint8_t *ciphertext,
+                                   uint8_t mac[16],
+                                   const uint8_t *additional,
+                                   uint32_t additionalLength)
 {
     ChaCha20 cc;
     uint8_t buffer[64];
