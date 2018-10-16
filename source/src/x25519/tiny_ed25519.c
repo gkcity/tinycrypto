@@ -17,8 +17,6 @@
 #include "ge.h"
 #include "sc.h"
 
-//#include "crypt25519/crypt25519.h"
-
 #if 0
 TINY_LOR
 void tiny_ed25519_generateKeyPair(Ed25519KeyPair *thiz)
@@ -91,17 +89,6 @@ TinyRet tiny_ed25519_verify(ED25519PublicKey *key,
                             const uint8_t *data,
                             uint32_t length)
 {
-//    uint8_t result[1024];
-//    unsigned long long int resultLength = 0;
-//    uint8_t message[ED25519_SIGNATURE_LENGTH + 32 + 36 + 32];
-//    uint64_t messageLength = 0;
-//
-//    memcpy(message, signature->value, signature->length);
-//    memcpy(message + signature->length, data, length);
-//    messageLength = signature->length + length;
-//
-//    return crypto_ed25519_verify(result, &resultLength, message, messageLength, key->value) ? TINY_RET_OK : TINY_RET_E_ARG_INVALID;
-
     TinyRet ret = TINY_RET_OK;
 
     do
@@ -139,37 +126,25 @@ TinyRet tiny_ed25519_verify(ED25519PublicKey *key,
             ret = TINY_RET_E_ARG_INVALID;
             break;
         }
-
     } while (false);
 
     return ret;
 }
 
 TINY_LOR
-void tiny_ed25519_sign(Ed25519KeyPair *keyPair,
+void tiny_ed25519_sign(ED25519PrivateKey *privateKey,
+                       ED25519PublicKey *publicKey,
                        ED25519Signature *signature,
                        const uint8_t *data,
                        uint32_t length)
 {
-
-//    uint8_t buf[1024];
-//    unsigned long long int len = 0;
-//
-//    memset(buf, 0, 1024);
-//    memcpy(buf + 64, data, length);
-//
-//    crypto_ed25519_sign(buf, &len, buf + 64, length, key->value);
-//
-//    memcpy(signature->value, buf, 64);
-//    signature->length = 64;
-
     sha512_ctx hash;
     unsigned char hram[64];
     unsigned char r[64];
     ge_p3 R;
 
     sha512_init(&hash);
-    sha512_update(&hash, keyPair->privateKey.value + 32, 32);
+    sha512_update(&hash, privateKey->value + 32, 32);
     sha512_update(&hash, data, length);
     sha512_final(&hash, r);
 
@@ -179,12 +154,12 @@ void tiny_ed25519_sign(Ed25519KeyPair *keyPair,
 
     sha512_init(&hash);
     sha512_update(&hash, signature->value, 32);
-    sha512_update(&hash, keyPair->publicKey.value, 32);
+    sha512_update(&hash, publicKey->value, 32);
     sha512_update(&hash, data, length);
     sha512_final(&hash, hram);
 
     sc_reduce(hram);
-    sc_muladd(signature->value + 32, hram, keyPair->privateKey.value, r);
+    sc_muladd(signature->value + 32, hram, privateKey->value, r);
 
     signature->length = 64;
 }

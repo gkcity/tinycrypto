@@ -158,55 +158,31 @@ SOURCE_GROUP(Chacha20poly1305\\headers FILES ${Chacha20poly1305_Header})
 SOURCE_GROUP(Chacha20poly1305\\Source FILES ${Chacha20poly1305_Source})
 
 #-----------------------
-# crypt25519
+# x25519
 #-----------------------
-SET(crypt25519_Header
-        crypt25519/crypt25519.h
+SET(x25519_Header
+        x25519/tiny_ed25519.h
+        x25519/tiny_curve25519.h
+        x25519/ed25519_key_exchange.h
+        x25519/precomp_data.h
+        x25519/fe.h
+        x25519/ge.h
+        x25519/sc.h
+        x25519/crypt25519.h
         )
 
-SET(crypt25519_Source
-        crypt25519/crypt25519.c
+SET(x25519_Source
+        x25519/tiny_ed25519.c
+        x25519/tiny_curve25519.c
+        x25519/ed25519_key_exchange.c
+        x25519/fe.c
+        x25519/ge.c
+        x25519/sc.c
+        x25519/crypt25519.c
         )
 
-SOURCE_GROUP(crypt25519\\headers FILES ${crypt25519_Header})
-SOURCE_GROUP(crypt25519\\Source FILES ${crypt25519_Source})
-
-
-#-----------------------
-# ED25519
-#-----------------------
-SET(ED25519_Header
-        ed25519/tiny_ed25519.h
-        ed25519/precomp_data.h
-        ed25519/fe.h
-        ed25519/ge.h
-        ed25519/sc.h
-        )
-
-SET(ED25519_Source
-        ed25519/tiny_ed25519.c
-        ed25519/fe.c
-        ed25519/ge.c
-        ed25519/sc.c
-        )
-
-SOURCE_GROUP(ED25519\\headers FILES ${ED25519_Header})
-SOURCE_GROUP(ED25519\\Source FILES ${ED25519_Source})
-
-#-----------------------
-# Curve25519
-#-----------------------
-SET(Curve25519_Header
-        curve25519/Curve25519.h
-        )
-
-SET(Curve25519_Source
-        curve25519/Curve25519.c
-        )
-
-SOURCE_GROUP(Curve25519\\headers FILES ${Curve25519_Header})
-SOURCE_GROUP(Curve25519\\Source FILES ${Curve25519_Source})
-
+SOURCE_GROUP(X25519\\headers FILES ${x25519_Header})
+SOURCE_GROUP(X25519\\Source FILES ${x25519_Source})
 
 #-----------------------
 # common
@@ -241,12 +217,8 @@ SET(SRC
         ${Poly1305_Source}
         ${Chacha20poly1305_Header}
         ${Chacha20poly1305_Source}
-        ${crypt25519_Header}
-        ${crypt25519_Source}
-        ${ED25519_Header}
-        ${ED25519_Source}
-        ${Curve25519_Header}
-        ${Curve25519_Source}
+        ${x25519_Header}
+        ${x25519_Source}
         )
 
 #----------------------------------------------------------------------------

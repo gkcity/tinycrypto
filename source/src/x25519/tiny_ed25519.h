@@ -23,7 +23,7 @@
 TINY_BEGIN_DECLS
 
 
-#define ED25519_PRIVATE_KEY_LENGTH      64
+#define ED25519_PRIVATE_KEY_LENGTH      64 // 32 ?
 #define ED25519_PUBLIC_KEY_LENGTH       32
 #define ED25519_SIGNATURE_LENGTH        64
 
@@ -70,11 +70,11 @@ TinyRet tiny_ed25519_verify(ED25519PublicKey *key,
 
 TINY_LOR
 TINY_CRYPTO_API
-void tiny_ed25519_sign(Ed25519KeyPair *keyPair,
+void tiny_ed25519_sign(ED25519PrivateKey *privateKey,
+                       ED25519PublicKey *publicKey,
                        ED25519Signature *signature,
                        const uint8_t *data,
                        uint32_t length);
-
 
 TINY_END_DECLS
 

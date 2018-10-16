@@ -4,7 +4,7 @@
  * @author jxfengzi@gmail.com
  * @date   2013-7-9
  *
- * @file   Curve25519.h
+ * @file   tiny_curve25519.h
  *
  * @remark
  *      set tabstop=4
@@ -12,8 +12,8 @@
  *      set expandtab
  */
 
-#ifndef __CURVE25519_H__
-#define __CURVE25519_H__
+#ifndef __TINY_CURVE25519_H__
+#define __TINY_CURVE25519_H__
 
 #include <tiny_base.h>
 #include <stddef.h>
@@ -56,4 +56,4 @@ void Curve25519_GenerateSharedKey(Curve25519PrivateKey *b, Curve25519PublicKey *
 
 TINY_END_DECLS
 
-#endif /* __CURVE25519_H__ */
+#endif /* __TINY_CURVE25519_H__ */
