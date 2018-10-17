@@ -4,7 +4,7 @@
  * @author jxfengzi@gmail.com
  * @date   2013-7-9
  *
- * @file   ed25519_key_exchange.c
+ * @file   tiny_ed25519_key_exchange.c
  *
  * @remark
  *      set tabstop=4
@@ -12,8 +12,8 @@
  *      set expandtab
  */
 
-#include "ed25519_key_exchange.h"
-#include "fe.h"
+#include "tiny_ed25519_key_exchange.h"
+#include "tiny_x25519_fe.h"
 
 
 static void zeroize(void *v, size_t n)
@@ -21,9 +21,9 @@ static void zeroize(void *v, size_t n)
     volatile unsigned char *p = v; while(n--) *p++ = 0;
 }
 
-void ed25519_key_exchange(unsigned char *shared_secret,
-                          const unsigned char *public_key,
-                          const unsigned char *private_key)
+void tiny_ed25519_key_exchange(unsigned char *shared_secret,
+                               const unsigned char *public_key,
+                               const unsigned char *private_key)
 {
     unsigned char e[32];
     unsigned int i;

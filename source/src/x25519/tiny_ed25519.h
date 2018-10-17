@@ -23,7 +23,7 @@
 TINY_BEGIN_DECLS
 
 
-#define ED25519_PRIVATE_KEY_LENGTH      64 // 32 ?
+#define ED25519_PRIVATE_KEY_LENGTH      32
 #define ED25519_PUBLIC_KEY_LENGTH       32
 #define ED25519_SIGNATURE_LENGTH        64
 
@@ -51,7 +51,6 @@ typedef struct _Ed25519KeyPair
     ED25519PublicKey publicKey;
 } Ed25519KeyPair;
 
-#if 0
 TINY_LOR
 TINY_CRYPTO_API
 void tiny_ed25519_generateKeyPair(Ed25519KeyPair *thiz);
@@ -59,7 +58,6 @@ void tiny_ed25519_generateKeyPair(Ed25519KeyPair *thiz);
 TINY_LOR
 TINY_CRYPTO_API
 void tiny_ed25519_copyKeyPair(Ed25519KeyPair *dst, Ed25519KeyPair *src);
-#endif
 
 TINY_LOR
 TINY_CRYPTO_API

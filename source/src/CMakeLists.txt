@@ -163,22 +163,22 @@ SOURCE_GROUP(Chacha20poly1305\\Source FILES ${Chacha20poly1305_Source})
 SET(x25519_Header
         x25519/tiny_ed25519.h
         x25519/tiny_curve25519.h
-        x25519/ed25519_key_exchange.h
-        x25519/precomp_data.h
-        x25519/fe.h
-        x25519/ge.h
-        x25519/sc.h
-        x25519/crypt25519.h
+        x25519/tiny_ed25519_key_exchange.h
+        x25519/tiny_x25519_key_convert.h
+        x25519/tiny_x25519_precomp_data.c
+        x25519/tiny_x25519_fe.h
+        x25519/tiny_x25519_ge.h
+        x25519/tiny_x25519_sc.h
         )
 
 SET(x25519_Source
         x25519/tiny_ed25519.c
         x25519/tiny_curve25519.c
-        x25519/ed25519_key_exchange.c
-        x25519/fe.c
-        x25519/ge.c
-        x25519/sc.c
-        x25519/crypt25519.c
+        x25519/tiny_ed25519_key_exchange.c
+        x25519/tiny_x25519_key_convert.c
+        x25519/tiny_x25519_fe.c
+        x25519/tiny_x25519_ge.c
+        x25519/tiny_x25519_sc.c
         )
 
 SOURCE_GROUP(X25519\\headers FILES ${x25519_Header})

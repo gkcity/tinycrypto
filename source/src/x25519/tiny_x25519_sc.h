@@ -4,7 +4,7 @@
  * @author jxfengzi@gmail.com
  * @date   2013-7-9
  *
- * @file   sc.h
+ * @file   tiny_x25519_sc.h
  *
  * @remark
  *      set tabstop=4
@@ -12,8 +12,8 @@
  *      set expandtab
  */
 
-#ifndef __SC_H__
-#define __SC_H__
+#ifndef __TINY_X25519_SC_H__
+#define __TINY_X25519_SC_H__
 
 #include <tiny_base.h>
 
@@ -30,4 +30,4 @@ void sc_muladd(unsigned char *s, const unsigned char *a, const unsigned char *b,
 
 TINY_END_DECLS
 
-#endif /* __SC_H__ */
+#endif /* __TINY_X25519_SC_H__ */

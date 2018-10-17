@@ -4,7 +4,7 @@
  * @author jxfengzi@gmail.com
  * @date   2013-7-9
  *
- * @file   sc.c
+ * @file   tiny_x25519_sc.c
  *
  * @remark
  *      set tabstop=4
@@ -12,10 +12,10 @@
  *      set expandtab
  */
 
-//#include "fixedint.h"
-#include "sc.h"
+#include "tiny_x25519_sc.h"
 
-static uint64_t load_3(const unsigned char *in) {
+static uint64_t load_3(const unsigned char *in)
+{
     uint64_t result;
 
     result = (uint64_t) in[0];
@@ -25,7 +25,8 @@ static uint64_t load_3(const unsigned char *in) {
     return result;
 }
 
-static uint64_t load_4(const unsigned char *in) {
+static uint64_t load_4(const unsigned char *in)
+{
     uint64_t result;
 
     result = (uint64_t) in[0];
@@ -46,7 +47,8 @@ Output:
   Overwrites s in place.
 */
 
-void sc_reduce(unsigned char *s) {
+void sc_reduce(unsigned char *s)
+{
     int64_t s0 = 2097151 & load_3(s);
     int64_t s1 = 2097151 & (load_4(s + 2) >> 5);
     int64_t s2 = 2097151 & (load_3(s + 5) >> 2);
@@ -361,7 +363,6 @@ void sc_reduce(unsigned char *s) {
 }
 
 
-
 /*
 Input:
   a[0]+256*a[1]+...+256^31*a[31] = a
@@ -373,7 +374,8 @@ Output:
   where l = 2^252 + 27742317777372353535851937790883648493.
 */
 
-void sc_muladd(unsigned char *s, const unsigned char *a, const unsigned char *b, const unsigned char *c) {
+void sc_muladd(unsigned char *s, const unsigned char *a, const unsigned char *b, const unsigned char *c)
+{
     int64_t a0 = 2097151 & load_3(a);
     int64_t a1 = 2097151 & (load_4(a + 2) >> 5);
     int64_t a2 = 2097151 & (load_3(a + 5) >> 2);
@@ -468,9 +470,12 @@ void sc_muladd(unsigned char *s, const unsigned char *a, const unsigned char *b,
     s7 = c7 + a0 * b7 + a1 * b6 + a2 * b5 + a3 * b4 + a4 * b3 + a5 * b2 + a6 * b1 + a7 * b0;
     s8 = c8 + a0 * b8 + a1 * b7 + a2 * b6 + a3 * b5 + a4 * b4 + a5 * b3 + a6 * b2 + a7 * b1 + a8 * b0;
     s9 = c9 + a0 * b9 + a1 * b8 + a2 * b7 + a3 * b6 + a4 * b5 + a5 * b4 + a6 * b3 + a7 * b2 + a8 * b1 + a9 * b0;
-    s10 = c10 + a0 * b10 + a1 * b9 + a2 * b8 + a3 * b7 + a4 * b6 + a5 * b5 + a6 * b4 + a7 * b3 + a8 * b2 + a9 * b1 + a10 * b0;
-    s11 = c11 + a0 * b11 + a1 * b10 + a2 * b9 + a3 * b8 + a4 * b7 + a5 * b6 + a6 * b5 + a7 * b4 + a8 * b3 + a9 * b2 + a10 * b1 + a11 * b0;
-    s12 = a1 * b11 + a2 * b10 + a3 * b9 + a4 * b8 + a5 * b7 + a6 * b6 + a7 * b5 + a8 * b4 + a9 * b3 + a10 * b2 + a11 * b1;
+    s10 = c10 + a0 * b10 + a1 * b9 + a2 * b8 + a3 * b7 + a4 * b6 + a5 * b5 + a6 * b4 + a7 * b3 + a8 * b2 + a9 * b1 +
+          a10 * b0;
+    s11 = c11 + a0 * b11 + a1 * b10 + a2 * b9 + a3 * b8 + a4 * b7 + a5 * b6 + a6 * b5 + a7 * b4 + a8 * b3 + a9 * b2 +
+          a10 * b1 + a11 * b0;
+    s12 = a1 * b11 + a2 * b10 + a3 * b9 + a4 * b8 + a5 * b7 + a6 * b6 + a7 * b5 + a8 * b4 + a9 * b3 + a10 * b2 +
+          a11 * b1;
     s13 = a2 * b11 + a3 * b10 + a4 * b9 + a5 * b8 + a6 * b7 + a7 * b6 + a8 * b5 + a9 * b4 + a10 * b3 + a11 * b2;
     s14 = a3 * b11 + a4 * b10 + a5 * b9 + a6 * b8 + a7 * b7 + a8 * b6 + a9 * b5 + a10 * b4 + a11 * b3;
     s15 = a4 * b11 + a5 * b10 + a6 * b9 + a7 * b8 + a8 * b7 + a9 * b6 + a10 * b5 + a11 * b4;

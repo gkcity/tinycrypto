@@ -12,16 +12,23 @@
  *      set expandtab
  */
 
-#include <sha/sha512.h>
 #include "tiny_ed25519.h"
-#include "ge.h"
-#include "sc.h"
+#include "tiny_curve25519.h"
+#include <sha/sha512.h>
+#include "tiny_x25519_ge.h"
+#include "tiny_x25519_sc.h"
+#include "tiny_x25519_key_convert.h"
 
-#if 0
 TINY_LOR
 void tiny_ed25519_generateKeyPair(Ed25519KeyPair *thiz)
 {
-    crypto_ed25519_keypair(thiz->publicKey.value, thiz->privateKey.value);
+    Curve25519PublicKey publicKey;
+    Curve25519PrivateKey privateKey;
+
+    tiny_curve25519_generateKeyPair(&publicKey, &privateKey);
+    tiny_convert_curve25519_pk_to_ed25519_pk(publicKey.value, thiz->publicKey.value);
+
+    memcpy(thiz->privateKey.value, privateKey.value, ED25519_PRIVATE_KEY_LENGTH);
     thiz->publicKey.length = ED25519_PUBLIC_KEY_LENGTH;
     thiz->privateKey.length = ED25519_PRIVATE_KEY_LENGTH;
 }
@@ -38,8 +45,6 @@ void tiny_ed25519_copyKeyPair(Ed25519KeyPair *dst, Ed25519KeyPair *src)
         return;
     }
 }
-#endif
-
 
 static int consttime_equal(const unsigned char *x, const unsigned char *y)
 {

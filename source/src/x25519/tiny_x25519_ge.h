@@ -4,7 +4,7 @@
  * @author jxfengzi@gmail.com
  * @date   2013-7-9
  *
- * @file   ge.h
+ * @file   tiny_x25519_ge.h
  *
  * @remark
  *      set tabstop=4
@@ -12,11 +12,11 @@
  *      set expandtab
  */
 
-#ifndef __GE_H__
-#define __GE_H__
+#ifndef __TINY_X25519_GE_H__
+#define __TINY_X25519_GE_H__
 
 #include <tiny_base.h>
-#include "fe.h"
+#include "tiny_x25519_fe.h"
 
 TINY_BEGIN_DECLS
 
@@ -91,4 +91,4 @@ void ge_p3_to_p2(ge_p2 *r, const ge_p3 *p);
 
 TINY_END_DECLS
 
-#endif /* __GE_H__ */
+#endif /* __TINY_X25519_GE_H__ */

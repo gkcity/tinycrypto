@@ -47,11 +47,11 @@ typedef struct _Curve25519SharedKey
 
 TINY_CRYPTO_API
 TINY_LOR
-void Curve25519_GenerateKeyPair(Curve25519PublicKey *publicKey, Curve25519PrivateKey *privateKey);
+void tiny_curve25519_generateKeyPair(Curve25519PublicKey *publicKey, Curve25519PrivateKey *privateKey);
 
 TINY_CRYPTO_API
 TINY_LOR
-void Curve25519_GenerateSharedKey(Curve25519PrivateKey *b, Curve25519PublicKey *A, Curve25519SharedKey *sharedKey);
+void tiny_curve25519_generateSharedKey(Curve25519PrivateKey *b, Curve25519PublicKey *A, Curve25519SharedKey *sharedKey);
 
 
 TINY_END_DECLS

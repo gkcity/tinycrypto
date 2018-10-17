@@ -4,7 +4,7 @@
  * @author jxfengzi@gmail.com
  * @date   2013-7-9
  *
- * @file   fe.c
+ * @file   tiny_x25519_fe.c
  *
  * @remark
  *      set tabstop=4
@@ -12,7 +12,7 @@
  *      set expandtab
  */
 
-#include "fe.h"
+#include "tiny_x25519_fe.h"
 
 /*
     helper functions

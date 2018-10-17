@@ -4,7 +4,7 @@
  * @author jxfengzi@gmail.com
  * @date   2013-7-9
  *
- * @file   ge.c
+ * @file   tiny_x25519_ge.c
  *
  * @remark
  *      set tabstop=4
@@ -12,8 +12,8 @@
  *      set expandtab
  */
 
-#include "ge.h"
-#include "precomp_data.h"
+#include "tiny_x25519_ge.h"
+#include "tiny_x25519_precomp_data.c"
 
 /*
 r = p + q

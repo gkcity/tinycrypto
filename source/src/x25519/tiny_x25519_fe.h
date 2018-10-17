@@ -4,7 +4,7 @@
  * @author jxfengzi@gmail.com
  * @date   2013-7-9
  *
- * @file   fe.h
+ * @file   tiny_x25519_fe.h
  *
  * @remark
  *      set tabstop=4
@@ -12,8 +12,8 @@
  *      set expandtab
  */
 
-#ifndef __FE_H__
-#define __FE_H__
+#ifndef __TINY_X25519_FE_H__
+#define __TINY_X25519_FE_H__
 
 #include <tiny_base.h>
 
@@ -57,4 +57,4 @@ void fe_sub(fe h, const fe f, const fe g);
 
 TINY_END_DECLS
 
-#endif /* __FE_H__ */
+#endif /* __TINY_X25519_FE_H__ */
