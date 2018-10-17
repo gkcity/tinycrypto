@@ -41,35 +41,20 @@ SOURCE_GROUP(Bignum\\Source FILES ${Bignum_Source})
 #-----------------------
 # srp
 #-----------------------
+SET(Srp_Header
+        srp/SrpServer.h
+	srp/SrpClient.h
+        srp/srp_define.h
+        srp/srp_both.h
+        srp/srp_NG3072.h
+        )
 
-IF (SRP_REMOTE_ENABLED EQUAL 1)
-    MESSAGE(STATUS "SRP Type: remote")
-
-    SET(Srp_Header
-            srp/SrpServer.h
-            srp/srp_define.h
-            )
-
-    SET(Srp_Source
-            srp/remote/SrpServer.c
-            )
-
-ELSE ()
-    MESSAGE(STATUS "SRP Type: local")
-
-    SET(Srp_Header
-            srp/SrpServer.h
-            srp/srp_define.h
-            srp/local/srp_both.h
-            srp/local/srp_NG3072.h
-            )
-
-    SET(Srp_Source
-            srp/local/SrpServer.c
-            srp/local/srp_both.c
-            srp/local/srp_NG3072.c
-            )
-ENDIF ()
+SET(Srp_Source
+        srp/SrpServer.c
+	srp/SrpClient.c
+        srp/srp_both.c
+        srp/srp_NG3072.c
+        )
 
 SOURCE_GROUP(Srp\\headers FILES ${Srp_Header})
 SOURCE_GROUP(Srp\\Source FILES ${Srp_Source})
@@ -226,14 +211,6 @@ SET(SRC
 ADD_LIBRARY(tiny_crypto_static STATIC ${SRC})
 SET_TARGET_PROPERTIES(tiny_crypto_static PROPERTIES OUTPUT_NAME "tiny_crypto_static")
 SET_TARGET_PROPERTIES(tiny_crypto_static PROPERTIES LINKER_LANGUAGE C)
-
-#----------------------------------------------------------------------------
-# shared library
-#----------------------------------------------------------------------------
-#ADD_LIBRARY(iot_crypto_shared SHARED ${SRC})
-#SET_TARGET_PROPERTIES(iot_crypto_shared PROPERTIES OUTPUT_NAME "iot_crypto")
-#SET_TARGET_PROPERTIES(iot_crypto_shared PROPERTIES LINKER_LANGUAGE C)
-#TARGET_LINK_LIBRARIES(iot_crypto_shared ${OS_LIB} tiny_shared)
 
 #-----------------------------------------------------------------------------
 #

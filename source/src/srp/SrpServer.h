@@ -17,12 +17,29 @@
 
 #include <tiny_base.h>
 #include <common/tiny_crypto_api.h>
-#include "srp_define.h"
+#include "srp/srp_define.h"
 
 TINY_BEGIN_DECLS
 
+#define SRP_TEST 0
 
-struct _SrpServer;
+struct _SrpServer
+{
+    char username[USERNAME_LEN];
+    char password[PASSWORD_LEN];
+    uint8_t x[srp_HASH_LEN];
+    uint8_t s[salt_LEN];
+    uint8_t v[v_LEN];
+    uint8_t b[b_LEN];
+    uint8_t B[B_LEN];
+    uint8_t A[A_LEN];
+    uint8_t u[u_LEN];
+    uint8_t S[S_LEN];
+    uint8_t K[K_LEN];
+    uint8_t M1[M1_LEN];
+    uint8_t M2[M2_LEN];
+};
+
 typedef struct _SrpServer SrpServer;
 
 TINY_CRYPTO_API
@@ -31,7 +48,15 @@ SrpServer *SrpServer_New(const char *username, const char *password);
 
 TINY_CRYPTO_API
 TINY_LOR
+TinyRet SrpServer_Construct(SrpServer *thiz, const char *username, const char *password);
+
+TINY_CRYPTO_API
+TINY_LOR
 void SrpServer_Delete(SrpServer *thiz);
+
+TINY_CRYPTO_API
+TINY_LOR
+void SrpServer_Dispose(SrpServer *thiz);
 
 TINY_CRYPTO_API
 TINY_LOR
@@ -41,6 +66,56 @@ TINY_CRYPTO_API
 TINY_LOR
 TinyRet SrpServer_Set_svbB(SrpServer *thiz, uint8_t s[salt_LEN], uint8_t v[v_LEN], uint8_t b[b_LEN], uint8_t B[B_LEN]);
 
+#if SRP_TEST
+TINY_CRYPTO_API TinyRet SrpServer_set_s_hex(SrpServer *thiz, const char *hex);
+TINY_CRYPTO_API TinyRet SrpServer_set_b_hex(SrpServer *thiz, const char *hex);
+TINY_CRYPTO_API TinyRet SrpServer_set_A_hex(SrpServer *thiz, const char *hex);
+#endif
+
+TINY_CRYPTO_API
+TINY_LOR
+TinyRet SrpServer_generate_s(SrpServer *thiz);
+
+TINY_CRYPTO_API
+TINY_LOR
+TinyRet SrpServer_compute_v(SrpServer *thiz);
+
+TINY_CRYPTO_API
+TINY_LOR
+TinyRet SrpServer_generate_b(SrpServer *thiz);
+
+TINY_CRYPTO_API
+TINY_LOR
+TinyRet SrpServer_generate_B(SrpServer *thiz);
+
+TINY_CRYPTO_API
+TINY_LOR
+TinyRet SrpServer_set_A(SrpServer *thiz, const uint8_t *value, uint32_t len);
+
+TINY_CRYPTO_API
+TINY_LOR
+TinyRet SrpServer_compute_u(SrpServer *thiz);
+
+TINY_CRYPTO_API
+TINY_LOR
+TinyRet SrpServer_compute_S(SrpServer *thiz);
+
+TINY_CRYPTO_API
+TINY_LOR
+TinyRet SrpServer_compute_K(SrpServer *thiz);
+
+TINY_CRYPTO_API
+TINY_LOR
+TinyRet SrpServer_compute_M1(SrpServer *thiz);
+
+TINY_CRYPTO_API
+TINY_LOR
+TinyRet SrpServer_compute_M2(SrpServer *thiz);
+
+TINY_CRYPTO_API
+TINY_LOR
+TinyRet SrpServer_Verify(SrpServer *thiz, const uint8_t *A, uint32_t len, const uint8_t *M1, uint32_t size);
+
 TINY_CRYPTO_API
 TINY_LOR
 uint8_t * SrpServer_GetSalt(SrpServer *thiz);
@@ -48,10 +123,6 @@ uint8_t * SrpServer_GetSalt(SrpServer *thiz);
 TINY_CRYPTO_API
 TINY_LOR
 uint8_t * SrpServer_GetB(SrpServer *thiz);
-
-TINY_CRYPTO_API
-TINY_LOR
-TinyRet SrpServer_Verify(SrpServer *thiz, const uint8_t *A, uint32_t len, const uint8_t *M1, uint32_t size);
 
 TINY_CRYPTO_API
 TINY_LOR

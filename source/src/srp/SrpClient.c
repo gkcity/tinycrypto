@@ -15,7 +15,6 @@
 #include "SrpClient.h"
 #include "srp_both.h"
 #include "bignum/polarssl/bignum.h"
-#include "tiny_log_binary.h"
 #include <tiny_log.h>
 #include <tiny_malloc.h>
 #include <sha/sha512.h>
@@ -181,7 +180,7 @@ TinyRet SrpClient_set_s(SrpClient *thiz, const uint8_t *s, size_t s_len)
             break;
         }
 
-        print_binary("x", x_hash, 64);
+        //print_binary("x", x_hash, 64);
 
         if (0 != mpi_read_binary(&thiz->x, x_hash, srp_HASH_LEN))
         {

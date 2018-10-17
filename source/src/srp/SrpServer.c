@@ -19,10 +19,10 @@
 #include <tiny_malloc.h>
 #include <sha/sha512.h>
 #include <tiny_print_binary.h>
+#include <bignum/tiny_bignum.h>
 #include "SrpServer.h"
 #include "srp_NG3072.h"
 #include "srp_both.h"
-#include <bignum/tiny_bignum.h>
 
 #define TAG                 "SrpServer"
 
