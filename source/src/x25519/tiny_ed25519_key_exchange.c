@@ -28,13 +28,13 @@ void tiny_ed25519_key_exchange(unsigned char *shared_secret,
     unsigned char e[32];
     unsigned int i;
 
-    fe x1;
-    fe x2;
-    fe z2;
-    fe x3;
-    fe z3;
-    fe tmp0;
-    fe tmp1;
+    x25519_fe x1;
+    x25519_fe x2;
+    x25519_fe z2;
+    x25519_fe x3;
+    x25519_fe z3;
+    x25519_fe tmp0;
+    x25519_fe tmp1;
 
     int pos;
     unsigned int swap;

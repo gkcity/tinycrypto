@@ -1,4 +1,4 @@
-#include <ed25519/Ed25519.h>
+#include <x25519/tiny_ed25519.h>
 
 void tiny_print_mem(const char *tag, const char *function)
 {
@@ -29,7 +29,7 @@ int main(void)
     Ed25519KeyPair pair;
 
     memset(&pair, 0, sizeof(Ed25519KeyPair));
-    Ed25519_GenerateKeyPair(&pair);
+    tiny_ed25519_generateKeyPair(&pair);
 
     print_binary("PrivateKey", pair.privateKey.value, ED25519_PRIVATE_KEY_LENGTH);
     print_binary("PublicKey", pair.publicKey.value, ED25519_PUBLIC_KEY_LENGTH);

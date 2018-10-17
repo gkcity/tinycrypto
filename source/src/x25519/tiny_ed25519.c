@@ -101,8 +101,8 @@ TinyRet tiny_ed25519_verify(ED25519PublicKey *key,
         unsigned char h[64];
         unsigned char checker[32];
         sha512_ctx hash;
-        ge_p3 A;
-        ge_p2 R;
+        x25519_ge_p3 A;
+        x25519_ge_p2 R;
 
         if (signature->value[63] & 224)
         {
@@ -146,7 +146,7 @@ void tiny_ed25519_sign(ED25519PrivateKey *privateKey,
     sha512_ctx hash;
     unsigned char hram[64];
     unsigned char r[64];
-    ge_p3 R;
+    x25519_ge_p3 R;
 
     sha512_init(&hash);
     sha512_update(&hash, privateKey->value + 32, 32);

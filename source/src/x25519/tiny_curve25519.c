@@ -21,8 +21,8 @@
 
 static int curve25519_getpub(unsigned char* public_key, const unsigned char* private_key)
 {
-    ge_p3 A;
-    fe x1, tmp0, tmp1;
+    x25519_ge_p3 A;
+    x25519_fe x1, tmp0, tmp1;
     x25519_ge_scalarmult_base(&A, private_key);
     x25519_ge_p3_tobytes(public_key, &A);
 

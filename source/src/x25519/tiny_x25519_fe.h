@@ -21,7 +21,7 @@ TINY_BEGIN_DECLS
 
 
 /*
-    fe means field element.
+    x25519_fe means field element.
     Here the field is \Z/(2^255-19).
     An element t, entries t[0]...t[9], represents the integer
     t[0]+2^26 t[1]+2^51 t[2]+2^77 t[3]+2^102 t[4]+...+2^230 t[9].
@@ -29,30 +29,30 @@ TINY_BEGIN_DECLS
 */
 
 
-typedef int32_t fe[10];
+typedef int32_t x25519_fe[10];
 
 
-void x25519_fe_0(fe h);
-void x25519_fe_1(fe h);
+void x25519_fe_0(x25519_fe h);
+void x25519_fe_1(x25519_fe h);
 
-void x25519_fe_frombytes(fe h, const unsigned char *s);
-void x25519_fe_tobytes(unsigned char *s, const fe h);
+void x25519_fe_frombytes(x25519_fe h, const unsigned char *s);
+void x25519_fe_tobytes(unsigned char *s, const x25519_fe h);
 
-void x25519_fe_copy(fe h, const fe f);
-int x25519_fe_isnegative(const fe f);
-int x25519_fe_isnonzero(const fe f);
-void x25519_fe_cmov(fe f, const fe g, unsigned int b);
-void x25519_fe_cswap(fe f, fe g, unsigned int b);
+void x25519_fe_copy(x25519_fe h, const x25519_fe f);
+int x25519_fe_isnegative(const x25519_fe f);
+int x25519_fe_isnonzero(const x25519_fe f);
+void x25519_fe_cmov(x25519_fe f, const x25519_fe g, unsigned int b);
+void x25519_fe_cswap(x25519_fe f, x25519_fe g, unsigned int b);
 
-void x25519_fe_neg(fe h, const fe f);
-void x25519_fe_add(fe h, const fe f, const fe g);
-void x25519_fe_invert(fe out, const fe z);
-void x25519_fe_sq(fe h, const fe f);
-void x25519_fe_sq2(fe h, const fe f);
-void x25519_fe_mul(fe h, const fe f, const fe g);
-void x25519_fe_mul121666(fe h, fe f);
-void x25519_fe_pow22523(fe out, const fe z);
-void x25519_fe_sub(fe h, const fe f, const fe g);
+void x25519_fe_neg(x25519_fe h, const x25519_fe f);
+void x25519_fe_add(x25519_fe h, const x25519_fe f, const x25519_fe g);
+void x25519_fe_invert(x25519_fe out, const x25519_fe z);
+void x25519_fe_sq(x25519_fe h, const x25519_fe f);
+void x25519_fe_sq2(x25519_fe h, const x25519_fe f);
+void x25519_fe_mul(x25519_fe h, const x25519_fe f, const x25519_fe g);
+void x25519_fe_mul121666(x25519_fe h, x25519_fe f);
+void x25519_fe_pow22523(x25519_fe out, const x25519_fe z);
+void x25519_fe_sub(x25519_fe h, const x25519_fe f, const x25519_fe g);
 
 
 TINY_END_DECLS

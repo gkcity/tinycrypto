@@ -43,7 +43,7 @@ static uint64_t load_4(const unsigned char *in) {
     h = 0
 */
 
-void x25519_fe_0(fe h) {
+void x25519_fe_0(x25519_fe h) {
     h[0] = 0;
     h[1] = 0;
     h[2] = 0;
@@ -62,7 +62,7 @@ void x25519_fe_0(fe h) {
     h = 1
 */
 
-void x25519_fe_1(fe h) {
+void x25519_fe_1(x25519_fe h) {
     h[0] = 1;
     h[1] = 0;
     h[2] = 0;
@@ -89,7 +89,7 @@ void x25519_fe_1(fe h) {
        |h| bounded by 1.1*2^26,1.1*2^25,1.1*2^26,1.1*2^25,etc.
 */
 
-void x25519_fe_add(fe h, const fe f, const fe g) {
+void x25519_fe_add(x25519_fe h, const x25519_fe f, const x25519_fe g) {
     int32_t f0 = f[0];
     int32_t f1 = f[1];
     int32_t f2 = f[2];
@@ -142,7 +142,7 @@ void x25519_fe_add(fe h, const fe f, const fe g) {
     Preconditions: b in {0,1}.
 */
 
-void x25519_fe_cmov(fe f, const fe g, unsigned int b) {
+void x25519_fe_cmov(x25519_fe f, const x25519_fe g, unsigned int b) {
     int32_t f0 = f[0];
     int32_t f1 = f[1];
     int32_t f2 = f[2];
@@ -205,7 +205,7 @@ void x25519_fe_cmov(fe f, const fe g, unsigned int b) {
     Preconditions: b in {0,1}.
 */
 
-void x25519_fe_cswap(fe f, fe g, unsigned int b) {
+void x25519_fe_cswap(x25519_fe f, x25519_fe g, unsigned int b) {
     int32_t f0 = f[0];
     int32_t f1 = f[1];
     int32_t f2 = f[2];
@@ -275,7 +275,7 @@ void x25519_fe_cswap(fe f, fe g, unsigned int b) {
     h = f
 */
 
-void x25519_fe_copy(fe h, const fe f) {
+void x25519_fe_copy(x25519_fe h, const x25519_fe f) {
     int32_t f0 = f[0];
     int32_t f1 = f[1];
     int32_t f2 = f[2];
@@ -305,7 +305,7 @@ void x25519_fe_copy(fe h, const fe f) {
     Ignores top bit of h.
 */
 
-void x25519_fe_frombytes(fe h, const unsigned char *s) {
+void x25519_fe_frombytes(x25519_fe h, const unsigned char *s) {
     int64_t h0 = load_4(s);
     int64_t h1 = load_3(s + 4) << 6;
     int64_t h2 = load_3(s + 7) << 5;
@@ -372,11 +372,11 @@ void x25519_fe_frombytes(fe h, const unsigned char *s) {
 
 
 
-void x25519_fe_invert(fe out, const fe z) {
-    fe t0;
-    fe t1;
-    fe t2;
-    fe t3;
+void x25519_fe_invert(x25519_fe out, const x25519_fe z) {
+    x25519_fe t0;
+    x25519_fe t1;
+    x25519_fe t2;
+    x25519_fe t3;
     int i;
 
     x25519_fe_sq(t0, z);
@@ -468,7 +468,7 @@ void x25519_fe_invert(fe out, const fe z) {
        |f| bounded by 1.1*2^26,1.1*2^25,1.1*2^26,1.1*2^25,etc.
 */
 
-int x25519_fe_isnegative(const fe f) {
+int x25519_fe_isnegative(const x25519_fe f) {
     unsigned char s[32];
 
     x25519_fe_tobytes(s, f);
@@ -486,7 +486,7 @@ int x25519_fe_isnegative(const fe f) {
        |f| bounded by 1.1*2^26,1.1*2^25,1.1*2^26,1.1*2^25,etc.
 */
 
-int x25519_fe_isnonzero(const fe f) {
+int x25519_fe_isnonzero(const x25519_fe f) {
     unsigned char s[32];
     unsigned char r;
 
@@ -564,7 +564,7 @@ int x25519_fe_isnonzero(const fe f) {
     With tighter constraints on inputs can squeeze carries into int32.
 */
 
-void x25519_fe_mul(fe h, const fe f, const fe g) {
+void x25519_fe_mul(x25519_fe h, const x25519_fe f, const x25519_fe g) {
     int32_t f0 = f[0];
     int32_t f1 = f[1];
     int32_t f2 = f[2];
@@ -787,7 +787,7 @@ Postconditions:
    |h| bounded by 1.1*2^25,1.1*2^24,1.1*2^25,1.1*2^24,etc.
 */
 
-void x25519_fe_mul121666(fe h, fe f) {
+void x25519_fe_mul121666(x25519_fe h, x25519_fe f) {
     int32_t f0 = f[0];
     int32_t f1 = f[1];
     int32_t f2 = f[2];
@@ -854,7 +854,7 @@ Postconditions:
    |h| bounded by 1.1*2^25,1.1*2^24,1.1*2^25,1.1*2^24,etc.
 */
 
-void x25519_fe_neg(fe h, const fe f) {
+void x25519_fe_neg(x25519_fe h, const x25519_fe f) {
     int32_t f0 = f[0];
     int32_t f1 = f[1];
     int32_t f2 = f[2];
@@ -889,10 +889,10 @@ void x25519_fe_neg(fe h, const fe f) {
 }
 
 
-void x25519_fe_pow22523(fe out, const fe z) {
-    fe t0;
-    fe t1;
-    fe t2;
+void x25519_fe_pow22523(x25519_fe out, const x25519_fe z) {
+    x25519_fe t0;
+    x25519_fe t1;
+    x25519_fe t2;
     int i;
     x25519_fe_sq(t0, z);
 
@@ -990,7 +990,7 @@ Postconditions:
 See x25519_fe_mul.c for discussion of implementation strategy.
 */
 
-void x25519_fe_sq(fe h, const fe f) {
+void x25519_fe_sq(x25519_fe h, const x25519_fe f) {
     int32_t f0 = f[0];
     int32_t f1 = f[1];
     int32_t f2 = f[2];
@@ -1153,7 +1153,7 @@ Postconditions:
 See x25519_fe_mul.c for discussion of implementation strategy.
 */
 
-void x25519_fe_sq2(fe h, const fe f) {
+void x25519_fe_sq2(x25519_fe h, const x25519_fe f) {
     int32_t f0 = f[0];
     int32_t f1 = f[1];
     int32_t f2 = f[2];
@@ -1323,7 +1323,7 @@ Postconditions:
    |h| bounded by 1.1*2^26,1.1*2^25,1.1*2^26,1.1*2^25,etc.
 */
 
-void x25519_fe_sub(fe h, const fe f, const fe g) {
+void x25519_fe_sub(x25519_fe h, const x25519_fe f, const x25519_fe g) {
     int32_t f0 = f[0];
     int32_t f1 = f[1];
     int32_t f2 = f[2];
@@ -1394,7 +1394,7 @@ Proof:
   so floor(2^(-255)(h + 19 2^(-25) h9 + 2^(-1))) = q.
 */
 
-void x25519_fe_tobytes(unsigned char *s, const fe h) {
+void x25519_fe_tobytes(unsigned char *s, const x25519_fe h) {
     int32_t h0 = h[0];
     int32_t h1 = h[1];
     int32_t h2 = h[2];
