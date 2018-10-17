@@ -297,7 +297,7 @@ TinyRet SrpServer_set_A(SrpServer *thiz, const uint8_t *value, uint32_t len)
     RETURN_VAL_IF_FAIL(value, TINY_RET_E_ARG_NULL);
     RETURN_VAL_IF_FAIL(len == A_LEN, TINY_RET_E_ARG_NULL);
 
-    LOG_MEM(TAG, "SrpServer_set_A");
+    LOG_D(TAG, "SrpServer_set_A");
 
     do
     {
