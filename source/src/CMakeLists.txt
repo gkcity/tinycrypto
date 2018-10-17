@@ -165,7 +165,6 @@ SET(x25519_Header
         x25519/tiny_curve25519.h
         x25519/tiny_ed25519_key_exchange.h
         x25519/tiny_x25519_key_convert.h
-        x25519/tiny_x25519_precomp_data.c
         x25519/tiny_x25519_fe.h
         x25519/tiny_x25519_ge.h
         x25519/tiny_x25519_sc.h

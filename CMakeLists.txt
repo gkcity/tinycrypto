@@ -89,7 +89,6 @@ IF (SRP_REMOTE_ENABLED EQUAL 1)
         ${SOURCE_ROOT}/x25519/tiny_curve25519.c
         ${SOURCE_ROOT}/x25519/tiny_ed25519_key_exchange.c
         ${SOURCE_ROOT}/x25519/tiny_x25519_key_convert.c
-        ${SOURCE_ROOT}/x25519/tiny_x25519_precomp_data.c
         ${SOURCE_ROOT}/x25519/tiny_x25519_fe.c
         ${SOURCE_ROOT}/x25519/tiny_x25519_ge.c
         ${SOURCE_ROOT}/x25519/tiny_x25519_sc.c
