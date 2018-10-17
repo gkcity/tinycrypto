@@ -21,11 +21,11 @@ void tiny_convert_curve25519_pk_to_ed25519_pk(uint8_t *in, uint8_t *out)
     fe one;
     fe ed_y;
 
-    fe_frombytes(mont_x, in);
-    fe_1(one);
-    fe_sub(mont_x_minus_one, mont_x, one);
-    fe_add(mont_x_plus_one, mont_x, one);
-    fe_invert(inv_mont_x_plus_one, mont_x_plus_one);
-    fe_mul(ed_y, mont_x_minus_one, inv_mont_x_plus_one);
-    fe_tobytes(out, ed_y);
+    x25519_fe_frombytes(mont_x, in);
+    x25519_fe_1(one);
+    x25519_fe_sub(mont_x_minus_one, mont_x, one);
+    x25519_fe_add(mont_x_plus_one, mont_x, one);
+    x25519_fe_invert(inv_mont_x_plus_one, mont_x_plus_one);
+    x25519_fe_mul(ed_y, mont_x_minus_one, inv_mont_x_plus_one);
+    x25519_fe_tobytes(out, ed_y);
 }

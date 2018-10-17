@@ -23,19 +23,19 @@ static int curve25519_getpub(unsigned char* public_key, const unsigned char* pri
 {
     ge_p3 A;
     fe x1, tmp0, tmp1;
-    ge_scalarmult_base(&A, private_key);
-    ge_p3_tobytes(public_key, &A);
+    x25519_ge_scalarmult_base(&A, private_key);
+    x25519_ge_p3_tobytes(public_key, &A);
 
     /* convert edwards to montgomery */
     /* due to CodesInChaos: montgomeryX = (edwardsY + 1)*inverse(1 - edwardsY) mod p */
-    fe_frombytes(x1, public_key);
-    fe_1(tmp1);
-    fe_add(tmp0, x1, tmp1);
-    fe_sub(tmp1, tmp1, x1);
-    fe_invert(tmp1, tmp1);
-    fe_mul(x1, tmp0, tmp1);
+    x25519_fe_frombytes(x1, public_key);
+    x25519_fe_1(tmp1);
+    x25519_fe_add(tmp0, x1, tmp1);
+    x25519_fe_sub(tmp1, tmp1, x1);
+    x25519_fe_invert(tmp1, tmp1);
+    x25519_fe_mul(x1, tmp0, tmp1);
 
-    fe_tobytes(public_key, x1);
+    x25519_fe_tobytes(public_key, x1);
     return 0;
 }
 

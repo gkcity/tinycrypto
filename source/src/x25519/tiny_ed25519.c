@@ -110,7 +110,7 @@ TinyRet tiny_ed25519_verify(ED25519PublicKey *key,
             break;
         }
 
-        if (ge_frombytes_negate_vartime(&A, key->value) != 0)
+        if (x25519_ge_frombytes_negate_vartime(&A, key->value) != 0)
         {
             ret = TINY_RET_E_ARG_INVALID;
             break;
@@ -122,9 +122,9 @@ TinyRet tiny_ed25519_verify(ED25519PublicKey *key,
         sha512_update(&hash, data, length);
         sha512_final(&hash, h);
 
-        sc_reduce(h);
-        ge_double_scalarmult_vartime(&R, h, &A, signature->value + 32);
-        ge_tobytes(checker, &R);
+        x25519_sc_reduce(h);
+        x25519_ge_double_scalarmult_vartime(&R, h, &A, signature->value + 32);
+        x25519_ge_tobytes(checker, &R);
 
         if (!consttime_equal(checker, signature->value))
         {
@@ -153,9 +153,9 @@ void tiny_ed25519_sign(ED25519PrivateKey *privateKey,
     sha512_update(&hash, data, length);
     sha512_final(&hash, r);
 
-    sc_reduce(r);
-    ge_scalarmult_base(&R, r);
-    ge_p3_tobytes(signature->value, &R);
+    x25519_sc_reduce(r);
+    x25519_ge_scalarmult_base(&R, r);
+    x25519_ge_p3_tobytes(signature->value, &R);
 
     sha512_init(&hash);
     sha512_update(&hash, signature->value, 32);
@@ -163,8 +163,8 @@ void tiny_ed25519_sign(ED25519PrivateKey *privateKey,
     sha512_update(&hash, data, length);
     sha512_final(&hash, hram);
 
-    sc_reduce(hram);
-    sc_muladd(signature->value + 32, hram, privateKey->value, r);
+    x25519_sc_reduce(hram);
+    x25519_sc_muladd(signature->value + 32, hram, privateKey->value, r);
 
     signature->length = 64;
 }
