@@ -25,7 +25,6 @@
 #define POLARSSL_BIGNUM_H
 
 #include <tiny_lor.h>
-#include <tiny_print_mem.h>
 
 #if !defined(POLARSSL_CONFIG_FILE)
 #include "bignum/polarssl/polarssl_config.h"

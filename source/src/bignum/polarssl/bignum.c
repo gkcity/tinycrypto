@@ -121,7 +121,6 @@ int mpi_grow( mpi *X, size_t nblimbs )
     {
         if( ( p = polarssl_malloc( nblimbs * ciL ) ) == NULL )
         {
-            //LOG_MEM("bignum", "mpi_grow");
             printf("malloc failed: %d\n", (int)(nblimbs * ciL));
             return( POLARSSL_ERR_MPI_MALLOC_FAILED );
         }
