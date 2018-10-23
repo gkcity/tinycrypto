@@ -95,7 +95,7 @@ TinyRet tiny_chacha20poly1305_decrypt(const uint8_t *key,
     poly1305_compute_mac(temp2, ciphertext, ciphertextLength, additional, additionalLength, computedMAC);
     if (memcmp(computedMAC, mac, 16) != 0)
     {
-        LOG_D(TAG, "computedMAC != MAC\n");
+        LOG_E(TAG, "computedMAC != MAC\n");
         return TINY_RET_E_ARG_INVALID;
     }
 
