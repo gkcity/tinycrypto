@@ -109,7 +109,7 @@ static const char basis_64[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuv
 
 uint32_t tiny_base64_encode_out_length(int bytesLength)
 {
-    return ((bytesLength + 2) / 3 * 4) + 1;
+    return (uint32_t) ((bytesLength + 2) / 3 * 4) + 1;
 }
 
 uint32_t tiny_base64_encode(const uint8_t *bytes, int length, char *out)
