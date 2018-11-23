@@ -64,7 +64,6 @@ SET(TinyCrypto_Header
         ${SOURCE_ROOT}/chacha20/ChaCha20.h
         ${SOURCE_ROOT}/poly1305/Poly1305.h
         ${SOURCE_ROOT}/chacha20poly1305/tiny_chacha20poly1305.h
-        ${SOURCE_ROOT}/x25519/tiny_ed25519.h
         ${SOURCE_ROOT}/x25519/tiny_curve25519.h
         ${SOURCE_ROOT}/x25519/tiny_ed25519_key_exchange.h
         ${SOURCE_ROOT}/x25519/tiny_x25519_key_convert.h
@@ -72,6 +71,8 @@ SET(TinyCrypto_Header
         ${SOURCE_ROOT}/x25519/tiny_x25519_ge.h
         ${SOURCE_ROOT}/x25519/tiny_x25519_sc.h
         ${SOURCE_ROOT}/secret/SecretKey.h
+        ${SOURCE_ROOT}/ed25519/ed25519.h
+        ${SOURCE_ROOT}/ed25519/tiny_ed25519.h
         )
 
 SET(TinyCrypto_Source
@@ -89,13 +90,14 @@ SET(TinyCrypto_Source
         ${SOURCE_ROOT}/chacha20/ChaCha20.c
         ${SOURCE_ROOT}/poly1305/Poly1305.c
         ${SOURCE_ROOT}/chacha20poly1305/tiny_chacha20poly1305.c
-        ${SOURCE_ROOT}/x25519/tiny_ed25519.c
         ${SOURCE_ROOT}/x25519/tiny_curve25519.c
         ${SOURCE_ROOT}/x25519/tiny_ed25519_key_exchange.c
         ${SOURCE_ROOT}/x25519/tiny_x25519_key_convert.c
         ${SOURCE_ROOT}/x25519/tiny_x25519_fe.c
         ${SOURCE_ROOT}/x25519/tiny_x25519_ge.c
         ${SOURCE_ROOT}/x25519/tiny_x25519_sc.c
+        ${SOURCE_ROOT}/ed25519/ed25519.c
+        ${SOURCE_ROOT}/ed25519/tiny_ed25519.c
         )
 
 SOURCE_GROUP(TinyCrypto\\headers FILES ${TinyCrypto_Header})

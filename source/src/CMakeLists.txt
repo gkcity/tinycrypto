@@ -146,7 +146,7 @@ SOURCE_GROUP(Chacha20poly1305\\Source FILES ${Chacha20poly1305_Source})
 # x25519
 #-----------------------
 SET(x25519_Header
-        x25519/tiny_ed25519.h
+#        x25519/tiny_ed25519.h
         x25519/tiny_curve25519.h
         x25519/tiny_ed25519_key_exchange.h
         x25519/tiny_x25519_key_convert.h
@@ -156,7 +156,7 @@ SET(x25519_Header
         )
 
 SET(x25519_Source
-        x25519/tiny_ed25519.c
+#        x25519/tiny_ed25519.c
         x25519/tiny_curve25519.c
         x25519/tiny_ed25519_key_exchange.c
         x25519/tiny_x25519_key_convert.c
@@ -167,6 +167,22 @@ SET(x25519_Source
 
 SOURCE_GROUP(X25519\\headers FILES ${x25519_Header})
 SOURCE_GROUP(X25519\\Source FILES ${x25519_Source})
+
+#-----------------------
+# ed25519
+#-----------------------
+SET(ed25519_Header
+		ed25519/ed25519.h
+        ed25519/tiny_ed25519.h
+		)
+
+SET(ed25519_Source
+		ed25519/ed25519.c
+        ed25519/tiny_ed25519.c
+		)
+
+SOURCE_GROUP(ed25519\\headers FILES ${ed25519_Header})
+SOURCE_GROUP(ed25519\\Source FILES ${ed25519_Source})
 
 #-----------------------
 # common
@@ -203,6 +219,8 @@ SET(SRC
         ${Chacha20poly1305_Source}
         ${x25519_Header}
         ${x25519_Source}
+		${ed25519_Header}
+		${ed25519_Source}
         )
 
 #----------------------------------------------------------------------------
