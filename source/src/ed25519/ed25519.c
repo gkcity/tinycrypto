@@ -2486,7 +2486,7 @@ static void ge_p3_0(ge_p3 *h)
 
 /* base[i][j] = (j+1)*256^i*B */
 static const ge_precomp base[32][8] = {
-#include "ed25519_precomputed.c"
+#include "ed25519_precomputed.h"
 };
 
 static void ge_precomp_0(ge_precomp *h)
